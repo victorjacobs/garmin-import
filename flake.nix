@@ -16,7 +16,7 @@
   in {
     packages = forAllSystems (system: let
       pkgs = import nixpkgs {inherit system;};
-      go = pkgs.go_1_25;
+      go = pkgs.go_1_27;
     in {
       default = (pkgs.buildGoModule.override {inherit go;}) {
         pname = "garmin-import";
@@ -28,7 +28,7 @@
           in
             baseName != ".git" && baseName != ".direnv" && baseName != "result";
         };
-        vendorHash = "sha256-vCwnpFEQA1eO5B4jTpHWpQBivuxGMCtyFjSMIBpfVXc=";
+        vendorHash = "sha256-XjEruRKxJAyzIk2cJFMdgJQYEBX1Yp1RLALevlbFpeA=";
         env.CGO_ENABLED = "0";
         ldflags = [
           "-s"
@@ -43,7 +43,7 @@
 
     devShells = forAllSystems (system: let
       pkgs = import nixpkgs {inherit system;};
-      go = pkgs.go_1_25;
+      go = pkgs.go_1_27;
     in {
       default = pkgs.mkShell {
         packages = with pkgs; [go gopls gotools golangci-lint govulncheck delve alejandra];
